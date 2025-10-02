@@ -1,2 +1,2 @@
-const Notes = 'll';
-export default Notes;
+const Note = 'll';
+export default Note;
