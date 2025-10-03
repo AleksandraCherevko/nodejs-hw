@@ -7,10 +7,15 @@
 
 // export default errorHandler;
 // src/middleware/errorHandler.js
+import { HttpError } from 'http-errors';
+export const errorHandler = (err, req, res, next) => {
+  console.error('Error Middleware:', err);
 
-const errorHandler = (err, req, res, next) => {
-  console.error(err);
-
+  if (err instanceof HttpError) {
+    return res.status(err.status).json({
+      error: err.message || err.name,
+    });
+  }
   const isProd = process.env.NODE_ENV === 'production';
 
   res.status(500).json({
