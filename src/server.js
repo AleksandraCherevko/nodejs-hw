@@ -10,13 +10,15 @@ import { noteFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
 // import notesRoutes from './routes/notesRoutes.js';
+import router from './routes/notesRoutes.js';
+
 const app = express();
 const PORT = process.env.PORT || 3030;
 
 app.use(logger);
 app.use(express.json());
 app.use(cors());
-app.use(notesRoutes);
+app.use(router);
 // app.use(
 //   pino({
 //     level: 'info',
