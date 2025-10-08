@@ -26,6 +26,7 @@ const noteSchema = new Schema(
         'Finance',
         'Health',
         'Important',
+        'Todo',
       ],
     },
   },
