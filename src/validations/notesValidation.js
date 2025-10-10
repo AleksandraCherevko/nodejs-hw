@@ -1,6 +1,7 @@
 import { Joi, Segments } from 'celebrate';
 import { isValidObjectId } from 'mongoose';
 
+
 export const getAllNotesSchema = {
   [Segments.QUERY]: Joi.object({
     page: Joi.number().integer().min(1).default(1).messages({
@@ -54,3 +55,5 @@ export const createNoteSchema = {
     tag: Joi.string().valid(...tags),
   }),
 };
+
+
