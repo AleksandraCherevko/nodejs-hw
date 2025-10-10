@@ -1,6 +1,6 @@
 import { Joi, Segments } from 'celebrate';
 import { isValidObjectId } from 'mongoose';
-
+import { TAGS } from '../constants/tags.js';
 
 export const getAllNotesSchema = {
   [Segments.QUERY]: Joi.object({
@@ -16,9 +16,9 @@ export const getAllNotesSchema = {
       'number.max': 'Iems per page should have at most {#limit} characters',
     }),
     tag: Joi.string()
-      .valid(...tags)
+      .valid(...TAGS)
       .messages({
-        'any.only': `Tag must be one of: ${tags.join(', ')}`,
+        'any.only': `Tag must be one of: ${TAGS.join(', ')}`,
         'string.base': 'Tag must be a string',
       }),
     search: Joi.string().allow('').messages({
@@ -44,7 +44,7 @@ export const updateNoteSchema = {
   [Segments.BODY]: Joi.object({
     title: Joi.string().min(1),
     content: Joi.string().allow(''),
-    tag: Joi.string().valid(...tags),
+    tag: Joi.string().valid(...TAGS),
   }).min(1),
 };
 
@@ -52,8 +52,6 @@ export const createNoteSchema = {
   [Segments.BODY]: Joi.object({
     title: Joi.string().min(1),
     content: Joi.string().allow(''),
-    tag: Joi.string().valid(...tags),
+    tag: Joi.string().valid(...TAGS),
   }),
 };
-
-
