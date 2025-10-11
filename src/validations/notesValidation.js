@@ -12,8 +12,8 @@ export const getAllNotesSchema = {
     perPage: Joi.number().integer().min(5).max(20).default(10).messages({
       'number.base': 'Items per page must be a number',
       'number.integer': 'Items per page must be an integer',
-      'number.min': 'Iems per page should have at least {#limit} characters',
-      'number.max': 'Iems per page should have at most {#limit} characters',
+      'number.min': 'Items per page should have at least {#limit} characters',
+      'number.max': 'Items per page should have at most {#limit} characters',
     }),
     tag: Joi.string()
       .valid(...TAGS)
@@ -50,7 +50,7 @@ export const updateNoteSchema = {
 
 export const createNoteSchema = {
   [Segments.BODY]: Joi.object({
-    title: Joi.string().min(1),
+    title: Joi.string().min(1).required(),
     content: Joi.string().allow(''),
     tag: Joi.string().valid(...TAGS),
   }),
