@@ -10,6 +10,7 @@ import { logger } from './middleware/logger.js';
 import { notFoundHandler } from './middleware/notFoundHandler.js';
 import { errorHandler } from './middleware/errorHandler.js';
 
+import authRoutes from './routes/authRoutes.js';
 import notesRouter from './routes/notesRoutes.js';
 
 const app = express();
@@ -20,6 +21,7 @@ app.use(cors());
 app.use(logger);
 
 app.use(notesRouter);
+app.use(authRoutes);
 
 app.use(notFoundHandler);
 app.use(errors());
