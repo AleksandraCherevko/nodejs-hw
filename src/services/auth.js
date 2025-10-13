@@ -15,7 +15,6 @@ export const createSession = async (userId) => {
   });
 };
 
-
 export const setSessionCookies = (res, session) => {
   res.cookie('accessToken', session.accessToken, {
     httpOnly: true,
